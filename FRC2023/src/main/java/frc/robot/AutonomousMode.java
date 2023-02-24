@@ -8,7 +8,7 @@ public class AutonomousMode implements IRobotMode {
     private IDrive drive;
     private IGyroscopeSensor gyroscope;
     
-    public AutonomousMode(IDrive drive, IGyroscopeSensor gyroscope) {
+    public AutonomousMode(IDrive drive, IGyroscopeSensor gyroscope, IArm arm) {
         this.drive = drive;
         this.gyroscope = gyroscope;
         }

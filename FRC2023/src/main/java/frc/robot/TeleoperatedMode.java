@@ -6,13 +6,14 @@ public class TeleoperatedMode implements IRobotMode {
     
     private XboxController xboxController;
     private IDrive drive;
+    private IArm arm;
 
     private static final double LEFT_STICK_EXPONENT = 3.0;
     private static final double RIGHT_STICK_EXPONENT = 3.0;
     private static final double ROTATION_THRESHOLD = 0.3;
     // check values above
 
-    public TeleoperatedMode(IDrive drive){ 
+    public TeleoperatedMode(IDrive drive, IArm arm){ 
         xboxController = new XboxController(PortMap.USB.XBOXCONTROLLER);
         this.drive = drive;
     }
@@ -51,6 +52,29 @@ public class TeleoperatedMode implements IRobotMode {
             drive.rotateAbsolute(angle);
         }
 
+        if(xboxController.getYButton()) {
+            arm.grabberClose();
+        }
+
+        if(xboxController.getBButton()) {
+            arm.grabberOpen();
+        }
+
+        if(xboxController.getRightBumper()) {
+            arm.shoulderUp();
+        }
+
+        if(xboxController.getLeftBumper()) {
+            arm.shoulderDown();
+        }
+
+        if(xboxController.getRightTriggerAxis() > 0) {
+            arm.elbowUp();
+        }
+
+        if(xboxController.getLeftTriggerAxis() > 0) {
+            arm.elbowDown();
+        }
      }
 
 }

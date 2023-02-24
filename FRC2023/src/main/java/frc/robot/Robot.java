@@ -14,15 +14,17 @@ public class Robot extends RobotBase {
 
     private IDrive drive;
     private IGyroscopeSensor gyroscope;
+    private IArm arm;
 
     public Robot() {
         gyroscope = new NavXMXP();
 
         drive = new Drive(gyroscope);
+        arm = new Arm();
         // drive = new NullDrive(gyroscope);
         disabledMode = new DisabledMode();
-        teleoperatedMode = new TeleoperatedMode(drive);
-        autonomousMode = new AutonomousMode(drive, gyroscope);
+        teleoperatedMode = new TeleoperatedMode(drive, arm);
+        autonomousMode = new AutonomousMode(drive, gyroscope, arm);
     }
 
 

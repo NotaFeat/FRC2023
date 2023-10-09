@@ -54,7 +54,7 @@ public class TeleoperatedMode implements IRobotMode {
 
         double angle = Math.atan2(rightX, rightY);
 
-        // Think Pythagorean Thereom
+        // Think Pythagorean Theorem
         if(Math.sqrt(Math.pow(rightX, 2) + Math.pow(rightY, 2)) > ROTATION_THRESHOLD) {
             drive.rotateAbsolute(angle);
         }

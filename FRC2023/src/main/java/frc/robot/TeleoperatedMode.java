@@ -16,11 +16,14 @@ public class TeleoperatedMode implements IRobotMode {
     public TeleoperatedMode(IDrive drive, IArm arm){ 
         xboxController = new XboxController(PortMap.USB.XBOXCONTROLLER);
         this.drive = drive;
+        this.arm = arm;
     }
 
     @Override
     public void init(){
         drive.init();
+        arm.init();
+        drive.balanceOff();
     }
 
      @Override
@@ -28,6 +31,10 @@ public class TeleoperatedMode implements IRobotMode {
 
         if (xboxController.getBackButton()) {
             drive.resetGyro();
+        }
+
+        if (xboxController.getStartButton()) {
+            arm.resetPosition();
         }
 
         double leftX = xboxController.getLeftX();
@@ -53,12 +60,10 @@ public class TeleoperatedMode implements IRobotMode {
         }
 
         if(xboxController.getYButton()) {
-            arm.grabberClose();
-        }
-
-        if(xboxController.getBButton()) {
             arm.grabberOpen();
         }
+
+       
 
         if(xboxController.getRightBumper()) {
             arm.shoulderUp();
@@ -75,6 +80,25 @@ public class TeleoperatedMode implements IRobotMode {
         if(xboxController.getLeftTriggerAxis() > 0) {
             arm.elbowDown();
         }
-     }
 
+        
+        
+        if(xboxController.getXButton()) {
+            arm.midCone();
+        }
+        if(xboxController.getPOV() == 0) {
+            arm.shelf();
+        }
+        if(xboxController.getPOV() == 90) {
+            arm.rest();
+        }
+        if(xboxController.getBButton()) {
+            drive.balanceOff();
+        }
+        if(xboxController.getAButton()) {
+            drive.balanceOn();
+        }
+
+     }
+    
 }

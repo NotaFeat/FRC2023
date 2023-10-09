@@ -14,19 +14,24 @@ public interface IDrive {
     // Turns the robot to an absolute angle
     public void rotateAbsolute(double angle);
 
-    public void driveDistance(double distanceInches, double speed, double angle);
+    public void balanceOn();
 
+    public void balanceOff();
+
+    public void driveSpeed(double distanceInches, double speed, double angle);
+
+    public void move();
     /*
      * completionRoutine is called when the current action has been completed
      * Autonomous methods use degrees
      */
-    public void cartesianMovement(double distance, double direction, Runnable completionRoutine);
+    public void cartesianMovement(double xSpeed, double ySpeed, double zRotation, Runnable completionRoutine);
     
     public void driveDistance(double distanceInches, double speed, double angle, Runnable completionRoutine);
 
-    public void driveRevolutions(double rotations, double speed, double angle, Runnable completionRoutine);
+    public void driveSpeed(double forwardSpeed, double strafeSpeed, double angle, Runnable completionRoutine);
 
-    public void gyroCorrection();
+    public void driveRevolutions(double rotations, double speed, double angle, Runnable completionRoutine);
 
     public void rotateRelative(double angle, Runnable completionRoutine);
 
@@ -40,6 +45,8 @@ public interface IDrive {
     // This turns the robot to an absolute field angle
 
     public void stop();
+
+    public void moveAuto();
 
     public void init();
 

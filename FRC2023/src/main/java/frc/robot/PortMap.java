@@ -12,6 +12,7 @@ public class PortMap {
         public static final int REAR_LEFT_MOTOR = 4;
         public static final int REAR_RIGHT_MOTOR = 1;
         public static final int ELBOW_MOTOR = 6;
+        public static final int ELBOW_MOTOR_TWO = 8;
         public static final int SHOULDER_MOTOR = 5;
         public static final int GRABBER_MOTOR = 7;
     }

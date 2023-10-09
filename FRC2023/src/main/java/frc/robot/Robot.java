@@ -54,10 +54,12 @@ public class Robot extends RobotBase {
 
     private void doPeripheralReinitialization() {
         drive.init();
+        arm.init();
     }
 
     private void doPeripheralPeriodicProcessing() {
         drive.periodic();
+        arm.periodic();
         Debug.periodic();
     }
 

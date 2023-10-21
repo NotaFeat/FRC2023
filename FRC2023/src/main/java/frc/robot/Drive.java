@@ -211,7 +211,6 @@ public class Drive implements IDrive {
 
     @Override
     public void moveAuto() {
-        Debug.logPeriodic("frau lorenz");
         //driveManual(.2, 0);
         // driveSpeed(0.2,0,0);
 
